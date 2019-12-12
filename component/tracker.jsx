@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import TrackerModal from "./subcomponents/trackerModal";
+import TrackerButton from './subcomponents/trackerButton';
 
 class Tracker extends Component {
   state = {
@@ -57,25 +58,23 @@ class Tracker extends Component {
       >
         <View style={styles.row}>
           {/* MINUS BUTTON FUNCTION */}
-          <TouchableOpacity
-            style={styles.background}
+          <TrackerButton
             onPress={this.decreaseValue}
             onLongPress={this.bigDecreaseValue}
             onPressOut={this.cancelTimeout}
           >
             <Text style={styles.textable}>-</Text>
-          </TouchableOpacity>
+          </TrackerButton>
           {/* LIFE VALUE DISPLAY */}
           <Text style={styles.textable}>{this.state.value}</Text>
           {/* PLUS BUTTON FUNCTION */}
-          <TouchableOpacity
-            style={styles.background}
+          <TrackerButton
             onPress={this.increaseValue}
             onLongPress={this.bigIncreaseValue}
             onPressOut={this.cancelTimeout}
           >
             <Text style={styles.textable}>+</Text>
-          </TouchableOpacity>
+          </TrackerButton>
         </View>
         <View style={styles.row}>
           <TouchableOpacity
