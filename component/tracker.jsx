@@ -12,6 +12,10 @@ class Tracker extends Component {
 
   timer = null;
 
+  componentDidMount = () => {
+    this.setState({value: this.props.startingLife})
+  }
+
   increaseValue = () => {
     this.setState({
       value: this.state.value + 1
@@ -77,13 +81,11 @@ class Tracker extends Component {
           </TrackerButton>
         </View>
         <View style={styles.row}>
-          <TouchableOpacity
-            onPress={() => {
-              this.setState({ modalIsOpen: !this.state.modalIsOpen });
-            }}
+          <TrackerButton
+            onPress={this.changeModalIsOpen}
           >
             <Text style={styles.nameText}>{this.state.name}</Text>
-          </TouchableOpacity>
+          </TrackerButton>
         </View>
         <TrackerModal
           modalIsOpen={this.state.modalIsOpen}
@@ -120,22 +122,10 @@ const styles = StyleSheet.create({
     fontSize: 50,
     paddingHorizontal: 10
   },
-  input: {
-    borderColor: "black",
-    borderRadius: 5,
-    borderWidth: 1,
-    fontSize: 40,
-    color: "yellow",
-    textAlign: "center"
-  },
   nameText: {
     color: "yellow",
     fontSize: 15
   },
-  modal: {
-    backgroundColor: "green",
-    padding: 20
-  }
 });
 
 export default Tracker;

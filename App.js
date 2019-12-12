@@ -6,13 +6,21 @@ import SelectionScreen from './component/selectionScreen';
 
 export default class App extends Component {
   state={
-    isActive: true,
+    isActive: false,
     players: ["1", "2"],
-    startingLife: 0
+    startingLife: 20
   }
 
   startGame = () => {
     this.setState({isActive: true})
+  }
+
+  increaseLife = () => {
+    this.setState({startingLife: this.state.startingLife+10})
+  }
+  
+  decreaseLife = () => {
+    this.setState({startingLife: this.state.startingLife-10})
   }
   
   render() {
@@ -24,7 +32,13 @@ export default class App extends Component {
       </View>
       :
       <View style={styles.container}>
-        <SelectionScreen startGame={this.startGame} />
+        <StatusBar hidden={true} />
+        <SelectionScreen 
+          startGame={this.startGame} 
+          startingLife={this.state.startingLife} 
+          increaseLife={this.increaseLife} 
+          decreaseLife={this.decreaseLife} 
+        />
       </View>
     );
   }
