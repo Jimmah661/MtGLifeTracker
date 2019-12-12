@@ -1,31 +1,26 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, ToolbarAndroid } from 'react-native';
 import Tracker from './component/tracker';
 import Footer from './component/footer';
 import SelectionScreen from './component/selectionScreen';
 
 export default class App extends Component {
   state={
-    selection: true,
+    isActive: true,
     players: ["1", "2"],
     startingLife: 0
   }
 
   startGame = () => {
-    this.setState({selection: true})
+    this.setState({isActive: true})
   }
   
   render() {
-    return (this.state.selection ? 
+    return (this.state.isActive ? 
       <View style={styles.container}>
+        <StatusBar hidden={true} />
         <Tracker startingLife={this.state.startingLife} player="1" rotate={true}/>
         <Tracker startingLife={this.state.startingLife} player="2" />
-        {/* {this.state.players.map((item, index) => {
-          return (
-            <Tracker player={item} key={index}/>
-          )
-        })} */}
-        {/* <Footer /> */}
       </View>
       :
       <View style={styles.container}>

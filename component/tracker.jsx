@@ -4,10 +4,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   Text,
-  Modal,
-  Button,
-  TextInput
 } from "react-native";
+import TrackerModal from './subcomponents/trackerModal'
 
 class Tracker extends Component {
   state = {
@@ -23,6 +21,10 @@ class Tracker extends Component {
       value: this.state.value + 1
     });
   };
+
+  changeModalIsOpen = () => {
+    this.setState({modalIsOpen: !this.state.modalIsOpen})
+  }
 
   bigIncreaseValue = () => {
     this.setState({
@@ -89,24 +91,7 @@ class Tracker extends Component {
             <Text style={styles.nameText}>{this.state.name}</Text>
           </TouchableOpacity>
         </View>
-        <Modal
-          style={{ height: "100%" }}
-          visible={this.state.modalIsOpen}
-          animationType="slide"
-          transparent={true}
-        >
-          <View style={styles.modal}>
-            <TextInput style={styles.input} onChange={this.onChangeText}>
-              {this.state.name}
-            </TextInput>
-            <Button
-              title="Close"
-              onPress={() => {
-                this.setState({ modalIsOpen: !this.state.modalIsOpen });
-              }}
-            />
-          </View>
-        </Modal>
+        <TrackerModal modalIsOpen={this.state.modalIsOpen} onChangeText={this.onChangeText} name={this.state.name} changeModalIsOpen={this.changeModalIsOpen} />
       </View>
     );
   }
