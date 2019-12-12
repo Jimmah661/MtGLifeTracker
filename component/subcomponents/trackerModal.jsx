@@ -1,58 +1,37 @@
-import React, {Component} from 'react';
-import {
-  View,
-  StyleSheet,
-  Modal,
-  Button,
-  TextInput
-} from "react-native";
+import React, { Component } from "react";
+import { View, StyleSheet, Modal, Button, TextInput } from "react-native";
 
 class TrackerModal extends Component {
   render() {
     return (
       <Modal
-          style={{ height: "100%" }}
-          visible={this.props.modalIsOpen}
-          animationType="slide"
-          transparent={true}
-        >
-          <View style={styles.modal}>
+        visible={this.props.modalIsOpen}
+        animationType="slide"
+        transparent={true}
+      >
+        <View style={styles.modal}>
+          <View style={styles.modalView}>
             <TextInput style={styles.input} onChange={this.props.onChangeText}>
               {this.props.name}
             </TextInput>
-            <Button
-              title="Close"
-              onPress={this.props.changeModalIsOpen}
-            />
+            <Button title="Close" onPress={this.props.changeModalIsOpen} />
           </View>
-        </Modal>
-    )
+        </View>
+      </Modal>
+    );
   }
 }
 
 const styles = StyleSheet.create({
-  row: {
-    flexDirection: "row",
+  modal: {
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  modalView: {
+    backgroundColor: "green",
     width: "100%",
-    justifyContent: "space-evenly"
-  },
-  column: {
-    flexDirection: "column",
-    width: "100%"
-  },
-  columnRotateUp: {
-    transform: [{ rotate: "180deg" }]
-  },
-  columnRotateLeft: {
-    transform: [{ rotate: "270deg" }]
-  },
-  columnRotateRight: {
-    transform: [{ rotate: "90deg" }]
-  },
-  textable: {
-    color: "yellow",
-    fontSize: 50,
-    paddingHorizontal: 10
+    padding: 20
   },
   input: {
     borderColor: "black",
@@ -61,14 +40,6 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: "yellow",
     textAlign: "center"
-  },
-  nameText: {
-    color: "yellow",
-    fontSize: 15
-  },
-  modal: {
-    backgroundColor: "green",
-    padding: 20
   }
 });
 

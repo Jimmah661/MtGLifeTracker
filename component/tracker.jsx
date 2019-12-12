@@ -1,11 +1,6 @@
 import React, { Component } from "react";
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-} from "react-native";
-import TrackerModal from './subcomponents/trackerModal'
+import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
+import TrackerModal from "./subcomponents/trackerModal";
 
 class Tracker extends Component {
   state = {
@@ -23,14 +18,14 @@ class Tracker extends Component {
   };
 
   changeModalIsOpen = () => {
-    this.setState({modalIsOpen: !this.state.modalIsOpen})
-  }
+    this.setState({ modalIsOpen: !this.state.modalIsOpen });
+  };
 
   bigIncreaseValue = () => {
     this.setState({
       value: this.state.value + 10
     });
-    this.timer = setTimeout(this.bigIncreaseValue, 500)
+    this.timer = setTimeout(this.bigIncreaseValue, 500);
   };
 
   decreaseValue = () => {
@@ -43,12 +38,12 @@ class Tracker extends Component {
     this.setState({
       value: this.state.value - 10
     });
-    this.timer = setTimeout(this.bigDecreaseValue, 500)
+    this.timer = setTimeout(this.bigDecreaseValue, 500);
   };
 
   cancelTimeout = () => {
-    clearTimeout(this.timer)
-  }
+    clearTimeout(this.timer);
+  };
 
   onChangeText = event => {
     let newName = event.nativeEvent.text;
@@ -91,7 +86,12 @@ class Tracker extends Component {
             <Text style={styles.nameText}>{this.state.name}</Text>
           </TouchableOpacity>
         </View>
-        <TrackerModal modalIsOpen={this.state.modalIsOpen} onChangeText={this.onChangeText} name={this.state.name} changeModalIsOpen={this.changeModalIsOpen} />
+        <TrackerModal
+          modalIsOpen={this.state.modalIsOpen}
+          onChangeText={this.onChangeText}
+          name={this.state.name}
+          changeModalIsOpen={this.changeModalIsOpen}
+        />
       </View>
     );
   }
