@@ -39,8 +39,8 @@ class SelectionScreen extends Component {
         </View>
 
         <TouchableOpacity
-          style={{ alignItems: "center" }}
-          onPress={this.props.startGame}
+          style={styles.startButton}
+          onPress={this.props.changeIsActive}
         >
           <Text style={styles.textable}>Start Game</Text>
         </TouchableOpacity>
@@ -50,15 +50,25 @@ class SelectionScreen extends Component {
 }
 
 const styles = StyleSheet.create({
+  startButton: {
+    borderColor: "#fff",
+    borderRadius:10,
+    borderWidth: 2,
+    padding: 10,
+    alignItems: "center",
+    marginTop: 15
+  },
   textable: {
     color: "yellow",
     fontSize: 40,
     paddingHorizontal: 10,
-    textAlign: "center"
+    textAlign: "center",
+    padding: 5
   },
   row: {
     flexDirection: "row",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
+    marginBottom: 15
   },
   column: {
     flexDirection: "column",

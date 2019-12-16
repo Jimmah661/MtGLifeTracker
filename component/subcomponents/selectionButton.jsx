@@ -8,7 +8,7 @@ class SelectionButton extends Component {
         style={(this.props.numberOfPlayers === this.props.number) ? styles.buttonHighlight : styles.button}
         onPress={() => this.props.onPress(this.props.number)}
       >
-        <Text style={styles.buttonFont}>{this.props.number}</Text>
+        <Text style={(this.props.numberOfPlayers === this.props.number) ? styles.buttonFontHighlight : styles.buttonFont}>{this.props.number}</Text>
       </TouchableOpacity>
     );
   }
@@ -38,12 +38,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
     backgroundColor: "#fff",
-    opacity: .25
   },
   buttonFontHighlight: {
     color: "yellow",
     fontSize: 30,
-    padding: 5
+    padding: 5,
+color: "black"
   }
 });
 
